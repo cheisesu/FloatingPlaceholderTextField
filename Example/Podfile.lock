@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  FloatingPlaceholderTextField: 7a7ffd2cc8b1c0f6e90d67f69a59743281140eda
+  FloatingPlaceholderTextField: 4e36a8f9a6222d6c5f3a9b07f03f2c3c1a9902a2
 
-PODFILE CHECKSUM: ba295c07fe14263b0151f2fe1ceeb47454eede13
+PODFILE CHECKSUM: 31be965bc704cdf493e4e5c9220475af832bdfde
 
 COCOAPODS: 1.10.1
