@@ -1,16 +1,20 @@
 import UIKit
 
 extension FloatingPlaceholderTextField {
+    /// Just an alias for NSAttributedString attributes dictionary
     public typealias Attributes = [NSAttributedString.Key: Any]
     
+    /// States of the field
     public struct State: OptionSet, Hashable {
         public let rawValue: Int
         
+        /// Default state. It means when the field is not a first responder, not disabled and not filled.
         public static let `default` = State()
-        /// Состояние, когда поле в фокусе
+        /// State when the field is a first responder
         public static let active = State(rawValue: 1 << 0)
-        /// Состояние, когда в поле есть контент
+        /// State when there's text in the field
         public static let filled = State(rawValue: 1 << 1)
+        /// State when the field is not enabled
         public static let disabled = State(rawValue: 1 << 2)
         
         public init(rawValue: Int) {
@@ -19,7 +23,12 @@ extension FloatingPlaceholderTextField {
     }
 }
 
-/// Поле для ввода текста с перемещающимся наверх placeholder
+/**
+ Text field with floating placeholder with animation of its transition.
+ 
+ Usage is similar to **UIButton**. You have different states of the field and can set
+ placeholder attributes and underline colors for each state or its combination.
+ */
 open class FloatingPlaceholderTextField: UITextField {
     // MARK: - PRIVATE PROPERTIES
     
@@ -34,7 +43,8 @@ open class FloatingPlaceholderTextField: UITextField {
     private var placeholderAttributes: [State: Attributes] = [:]
     private var lineColors: [State: UIColor] = [:]
     
-    /// смещение текста и плейсхолдера при неактивном состоянии учитывая высоту шрифта при активном состоянии
+    /// Offset of text and placeholder when the field is not a first responder depending
+    /// on the height of font for active (first responder) state
     private var topNormalInset: CGFloat {
         let font = self.font(for: .active)
         return self.height(for: font)
@@ -69,11 +79,13 @@ open class FloatingPlaceholderTextField: UITextField {
     
     //MARK: - PUBLIC PROPERTIES
     
+    /// Width of line under the field. Default value 2
     open var bottomLineWidth: CGFloat = 2 {
         didSet { self.setNeedsDisplay() }
     }
     
-    open var currentState: State {
+    /// Current state of the field
+    public var currentState: State {
         var state = State()
         
         if self.isFirstResponder {
@@ -103,12 +115,20 @@ open class FloatingPlaceholderTextField: UITextField {
     
     //MARK: - PUBLIC METHODS
     
+    /// Sets attributes of a placeholder for passed state
+    ///
+    /// - Parameters:
+    ///   - attributes: NSAttributedString attributes
+    ///   - state: state or its combination
     open func setPlaceholderAttributes(_ attributes: Attributes?, for state: State) {
         self.placeholderAttributes[state] = attributes
         self.updatePlaceholderStyling()
         self.setNeedsLayout()
     }
     
+    /// Gets attributes for passed state. If there's no attributes for passed state defaultTextAttributes will be returned
+    /// - Parameter state: state or its combination
+    /// - Returns: NSAttributedString attrubutes dictionary
     open func placeholderAttributes(for state: State) -> Attributes {
         var subDefaultState = State.default
         if state.contains(.active) {
@@ -122,11 +142,18 @@ open class FloatingPlaceholderTextField: UITextField {
             self.defaultTextAttributes
     }
     
+    /// Sets color of line under the field for passed state
+    /// - Parameters:
+    ///   - color: underline color
+    ///   - state: state or its combination
     open func setLineColor(_ color: UIColor?, for state: State) {
         self.lineColors[state] = color
         self.setNeedsDisplay()
     }
     
+    /// Gets line color. If there's no color for passed state UIColor.clear will be returned
+    /// - Parameter state: state or its combination
+    /// - Returns: color of underline
     open func lineColor(for state: State) -> UIColor {
         var subDefaultState = State.default
         if state.contains(.active) {
