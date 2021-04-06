@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
-    <device id="retina4_7" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="vXZ-lx-hvc">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
                 <viewController id="vXZ-lx-hvc" customClass="ViewController" customModule="FloatingPlaceholderTextField_Example" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
@@ -20,11 +20,196 @@
                     <view key="view" contentMode="scaleToFill" id="kh9-bI-dsS">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="96E-hG-C5c">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3zi-79-rwZ">
+                                        <rect key="frame" x="0.0" y="0.0" width="375" height="362"/>
+                                        <subviews>
+                                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="6rs-uX-qER">
+                                                <rect key="frame" x="20" y="40" width="335" height="302"/>
+                                                <subviews>
+                                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Fucking field" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="poh-5v-83w" customClass="FloatingPlaceholderTextField" customModule="FloatingPlaceholderTextField">
+                                                        <rect key="frame" x="0.0" y="0.0" width="335" height="50"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="50" id="ysB-uR-fky"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                        <textInputTraits key="textInputTraits"/>
+                                                    </textField>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lr0-Ia-z1k">
+                                                        <rect key="frame" x="0.0" y="58" width="335" height="31"/>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Disabled" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baL-jb-1aT">
+                                                                <rect key="frame" x="0.0" y="0.0" width="286" height="31"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eXQ-xP-p5w">
+                                                                <rect key="frame" x="286" y="0.0" width="51" height="31"/>
+                                                                <connections>
+                                                                    <action selector="disabledSwitchHandler:" destination="vXZ-lx-hvc" eventType="valueChanged" id="kqi-Tt-adp"/>
+                                                                </connections>
+                                                            </switch>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="Sn4-qs-g7q">
+                                                        <rect key="frame" x="0.0" y="97" width="335" height="32"/>
+                                                        <segments>
+                                                            <segment title="Placeholder"/>
+                                                            <segment title="Line"/>
+                                                        </segments>
+                                                        <connections>
+                                                            <action selector="groupControlHandler:" destination="vXZ-lx-hvc" eventType="valueChanged" id="RZl-Mk-vDm"/>
+                                                        </connections>
+                                                    </segmentedControl>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="FDF-mf-6eN">
+                                                        <rect key="frame" x="0.0" y="136" width="335" height="118"/>
+                                                        <subviews>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="8Kx-5X-lI4">
+                                                                <rect key="frame" x="0.0" y="0.0" width="335" height="32"/>
+                                                                <segments>
+                                                                    <segment title="Inactive"/>
+                                                                    <segment title="Active"/>
+                                                                    <segment title="Disabled"/>
+                                                                </segments>
+                                                                <connections>
+                                                                    <action selector="stateControlHandler:" destination="vXZ-lx-hvc" eventType="valueChanged" id="8BR-L1-jh2"/>
+                                                                </connections>
+                                                            </segmentedControl>
+                                                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="1GN-hL-GRe">
+                                                                <rect key="frame" x="0.0" y="39" width="335" height="32"/>
+                                                                <segments>
+                                                                    <segment title="Empty"/>
+                                                                    <segment title="Filled"/>
+                                                                </segments>
+                                                                <connections>
+                                                                    <action selector="stateControlHandler:" destination="vXZ-lx-hvc" eventType="valueChanged" id="rbj-kW-Scv"/>
+                                                                </connections>
+                                                            </segmentedControl>
+                                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="C2f-qF-RU5">
+                                                                <rect key="frame" x="0.0" y="78" width="335" height="40"/>
+                                                                <subviews>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IcB-W9-0Bb">
+                                                                        <rect key="frame" x="0.0" y="0.0" width="60.5" height="40"/>
+                                                                        <color key="backgroundColor" systemColor="systemOrangeColor"/>
+                                                                        <connections>
+                                                                            <action selector="colorButtonHandler:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="u8v-pe-vwi"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yu2-Bu-Xl5">
+                                                                        <rect key="frame" x="68.5" y="0.0" width="60.5" height="40"/>
+                                                                        <color key="backgroundColor" systemColor="systemIndigoColor"/>
+                                                                        <connections>
+                                                                            <action selector="colorButtonHandler:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="3kh-t4-GUA"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qJO-si-EMX">
+                                                                        <rect key="frame" x="137" y="0.0" width="61" height="40"/>
+                                                                        <color key="backgroundColor" systemColor="systemRedColor"/>
+                                                                        <connections>
+                                                                            <action selector="colorButtonHandler:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="2EP-bO-wIl"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zua-dV-oTx">
+                                                                        <rect key="frame" x="206" y="0.0" width="60.5" height="40"/>
+                                                                        <color key="backgroundColor" systemColor="systemGreenColor"/>
+                                                                        <connections>
+                                                                            <action selector="colorButtonHandler:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="uWo-ld-KlJ"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E5w-bc-mGE">
+                                                                        <rect key="frame" x="274.5" y="0.0" width="60.5" height="40"/>
+                                                                        <color key="backgroundColor" systemColor="systemTealColor"/>
+                                                                        <connections>
+                                                                            <action selector="colorButtonHandler:" destination="vXZ-lx-hvc" eventType="touchUpInside" id="LIM-JH-9zv"/>
+                                                                        </connections>
+                                                                    </button>
+                                                                </subviews>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="height" constant="40" id="syD-Rz-zDA"/>
+                                                                </constraints>
+                                                            </stackView>
+                                                        </subviews>
+                                                    </stackView>
+                                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Fju-NT-YqN">
+                                                        <rect key="frame" x="0.0" y="262" width="335" height="40"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="40" id="O7A-fC-oYi"/>
+                                                        </constraints>
+                                                        <state key="normal" title="Resign"/>
+                                                        <connections>
+                                                            <action selector="resignButtonHandler" destination="vXZ-lx-hvc" eventType="touchUpInside" id="BGL-7e-pJU"/>
+                                                        </connections>
+                                                    </button>
+                                                </subviews>
+                                            </stackView>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="6rs-uX-qER" secondAttribute="bottom" constant="20" symbolic="YES" id="Bk8-Of-cUa"/>
+                                            <constraint firstItem="6rs-uX-qER" firstAttribute="top" secondItem="3zi-79-rwZ" secondAttribute="top" constant="40" id="GlG-hC-ZBe"/>
+                                            <constraint firstItem="6rs-uX-qER" firstAttribute="leading" secondItem="3zi-79-rwZ" secondAttribute="leading" constant="20" symbolic="YES" id="Iqt-Ip-A74"/>
+                                            <constraint firstAttribute="trailing" secondItem="6rs-uX-qER" secondAttribute="trailing" constant="20" symbolic="YES" id="skk-YA-8Mp"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="3zi-79-rwZ" firstAttribute="top" secondItem="xkF-FT-Fve" secondAttribute="top" id="NOi-3s-b65"/>
+                                    <constraint firstItem="3zi-79-rwZ" firstAttribute="width" secondItem="t4F-Dr-50A" secondAttribute="width" id="dab-Ko-zb5"/>
+                                    <constraint firstItem="3zi-79-rwZ" firstAttribute="trailing" secondItem="xkF-FT-Fve" secondAttribute="trailing" id="iv5-q4-qyl"/>
+                                    <constraint firstItem="3zi-79-rwZ" firstAttribute="leading" secondItem="xkF-FT-Fve" secondAttribute="leading" id="pMw-Nj-Z03"/>
+                                    <constraint firstItem="3zi-79-rwZ" firstAttribute="bottom" secondItem="xkF-FT-Fve" secondAttribute="bottom" id="ssu-95-D7n"/>
+                                </constraints>
+                                <viewLayoutGuide key="contentLayoutGuide" id="xkF-FT-Fve"/>
+                                <viewLayoutGuide key="frameLayoutGuide" id="t4F-Dr-50A"/>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="96E-hG-C5c" secondAttribute="bottom" id="I5u-N0-7GO"/>
+                            <constraint firstAttribute="trailing" secondItem="96E-hG-C5c" secondAttribute="trailing" id="ZgO-uY-6DG"/>
+                            <constraint firstItem="96E-hG-C5c" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="aFy-en-wEw"/>
+                            <constraint firstItem="96E-hG-C5c" firstAttribute="top" secondItem="kh9-bI-dsS" secondAttribute="top" id="nyg-UG-fdc"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="activitySegmentedControl" destination="8Kx-5X-lI4" id="gXL-hr-Hd1"/>
+                        <outlet property="disabledSwitch" destination="eXQ-xP-p5w" id="s2c-UK-mge"/>
+                        <outlet property="fillingSegmentedControl" destination="1GN-hL-GRe" id="L6f-wc-pYX"/>
+                        <outlet property="groupSegmentedControl" destination="Sn4-qs-g7q" id="rfg-t2-Z4n"/>
+                        <outlet property="textField" destination="poh-5v-83w" id="cW8-MK-z93"/>
+                        <outletCollection property="colorButtons" destination="IcB-W9-0Bb" collectionClass="NSMutableArray" id="JS4-Hy-cAz"/>
+                        <outletCollection property="colorButtons" destination="Yu2-Bu-Xl5" collectionClass="NSMutableArray" id="uP7-oG-kJ5"/>
+                        <outletCollection property="colorButtons" destination="qJO-si-EMX" collectionClass="NSMutableArray" id="itX-dM-C1W"/>
+                        <outletCollection property="colorButtons" destination="Zua-dV-oTx" collectionClass="NSMutableArray" id="zd5-ky-mo4"/>
+                        <outletCollection property="colorButtons" destination="E5w-bc-mGE" collectionClass="NSMutableArray" id="0Pe-bw-tyV"/>
+                    </connections>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="37.600000000000001" y="106.59670164917542"/>
         </scene>
     </scenes>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGreenColor">
+            <color red="0.20392156862745098" green="0.7803921568627451" blue="0.34901960784313724" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemOrangeColor">
+            <color red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemRedColor">
+            <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemTealColor">
+            <color red="0.35294117647058826" green="0.78431372549019607" blue="0.98039215686274506" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

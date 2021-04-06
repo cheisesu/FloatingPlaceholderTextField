@@ -1,0 +1,16 @@
+PODS:
+  - FloatingPlaceholderTextField (0.1.0)
+
+DEPENDENCIES:
+  - FloatingPlaceholderTextField (from `../`)
+
+EXTERNAL SOURCES:
+  FloatingPlaceholderTextField:
+    :path: "../"
+
+SPEC CHECKSUMS:
+  FloatingPlaceholderTextField: 4e36a8f9a6222d6c5f3a9b07f03f2c3c1a9902a2
+
+PODFILE CHECKSUM: 31be965bc704cdf493e4e5c9220475af832bdfde
+
+COCOAPODS: 1.10.1

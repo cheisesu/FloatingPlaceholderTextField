@@ -1,13 +1,7 @@
 use_frameworks!
 
-platform :ios, '9.0'
+platform :ios, '12.0'
 
 target 'FloatingPlaceholderTextField_Example' do
   pod 'FloatingPlaceholderTextField', :path => '../'
-
-  target 'FloatingPlaceholderTextField_Tests' do
-    inherit! :search_paths
-
-    
-  end
 end
