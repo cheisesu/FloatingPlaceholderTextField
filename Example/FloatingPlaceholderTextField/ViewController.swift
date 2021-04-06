@@ -87,7 +87,8 @@ class ViewController: UIViewController {
         let index = self.colorIndexes[group]?[state] ?? 0
         let color = self.colorButtons[index].backgroundColor ?? .gray
         return [
-            .font: UIFont.systemFont(ofSize: 16),
+            .font: state.contains(.active) || state.contains(.filled)
+                ? UIFont.systemFont(ofSize: 12) : UIFont.systemFont(ofSize: 16),
             .foregroundColor: color
         ]
     }
