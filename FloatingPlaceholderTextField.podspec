@@ -11,6 +11,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '12.0'
   s.swift_version = '5'
   
-  s.source_files = 'FloatingPlaceholderTextField/Classes/**/*'
+  s.source_files = 'Sources/FloatingPlaceholderTextField/Classes/**/*'
   s.frameworks = 'UIKit'
 end
